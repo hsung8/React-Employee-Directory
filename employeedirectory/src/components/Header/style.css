@@ -1,0 +1,12 @@
+.header {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: rgb(28, 100, 70);
+    color: rgb(232, 233, 219);
+    text-align: center;
+    margin-bottom: 5%;
+    height: 130px;
+}
+
+h1 {
+    margin-top: 30px;
+}
