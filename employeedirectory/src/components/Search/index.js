@@ -4,16 +4,14 @@ import "./style.css";
 function Search(props) {
     return (
         <div className="textCenter">
-            <form>
-                <input 
-                type="text" 
+            <input
+                type="text"
                 name="search"
                 className="searchForm"
-                value={props.search} 
-                onChange={props.handleChange}
-                placeholder = "Type keyword to search"
-                />
-            </form>
+                value={props.search}
+                onChange={props.handleInputChange}
+                placeholder="Type keyword to search"
+            />
         </div>
     )
 }
