@@ -31,61 +31,90 @@ class Wrapper extends React.Component {
   };
 
 
-  sortHandler(item) {
-    console.log("emp: ", this.employees)
-    let sortedEmployees;
+  // sortHandler(item) {
+  //   console.log("emp: ", this.employees)
+  //   let sortedEmployees;
 
-    if (item === "first") {
-      if (this.alphaOrder === true) {
-        sortedEmployees = this.employees.sort((a, b) => {
-          if (a.name.first < b.name.first) {
-            return -1;
-          }
-          if (a.name.first > b.name.first) {
-            return 1;
-          }
-          return 0;
-        });
-      } else {
-        sortedEmployees = this.employees.sort((a, b) => {
-          if (a.name.first > b.name.first) {
-            return -1;
-          }
-          if (a.name.first < b.name.first) {
-            return 1;
-          }
-          return 0;
-        });
+    sortHandler = item => {
+      let { employees, alphaOrder } = this.state;
+      let sortedEmployees;
+      if (item === 'first') {
+        if (alphaOrder === true) {
+          sortedEmployees = employees.sort((a, b) => {
+            if (a.name.first < b.name.first) {
+              return -1;
+            }
+            if (a.name.first > b.name.first) {
+              return 1;
+            }
+            return 0;
+          });
+        } else {
+          sortedEmployees = employees.sort((a, b) => {
+            if (a.name.first > b.name.first) {
+              return -1;
+            }
+            if (a.name.first < b.name.first) {
+              return 1;
+            }
+            return 0;
+          });
+        }
+      } else if (item === 'last') {
+        if (alphaOrder === true) {
+          sortedEmployees = employees.sort((a, b) => {
+            if (a.name.last < b.name.last) {
+              return -1;
+            }
+            if (a.name.last > b.name.last) {
+              return 1;
+            }
+            return 0;
+          });
+        } else {
+          sortedEmployees = employees.sort((a, b) => {
+            if (a.name.last > b.name.last) {
+              return -1;
+            }
+            if (a.name.last < b.name.last) {
+              return 1;
+            }
+            return 0;
+          });
+        }
       }
+      console.log(this.state);
+      this.setState({
+        employees: sortedEmployees,
+        alphaOrder: !this.alphaOrder,
+      });
+      console.log('sortedEmp: ', sortedEmployees);
+    };
+  // };
 
-      this.setState({ employees: sortedEmployees, alphaOrder: !this.alphaOrder });
-      console.log(sortedEmployees)
-    
-    }
+
+
+
+
+  render() {
+    console.log(this.state.empolyees)
+    return (
+      <div className="container">
+        <Header />
+        <Search
+          searchTerm={this.state.searchTerm}
+          handleChange={this.handleChange}
+        />
+        <Main
+          employees={this.state.employees}
+          sortHandler={this.sortHandler}
+          searchTerm={this.state.searchTerm}
+          alphaOrder={this.state.alphaOrder}
+        />
+        <Footer />
+      </div>
+    )
   };
-
-
-
-
-
-render() {
-  console.log(this.state.empolyees)
-  return (
-    <div className="container">
-      <Header />
-      <Search
-        searchTerm={this.state.searchTerm}
-        handleChange={this.handleChange}
-      />
-      <Main
-        employees={this.state.employees}
-        sortHandler={this.sortHandler}
-        searchTerm={this.state.searchTerm}
-      />
-      <Footer />
-    </div>
-  )
-};
 }
 
 export default Wrapper;
