@@ -20,6 +20,7 @@ class Wrapper extends React.Component {
       .then((res) => {
         this.setState({ employees: res.data.results });
       });
+    
   };
 
 
@@ -31,73 +32,70 @@ class Wrapper extends React.Component {
   };
 
 
-  // sortHandler(item) {
-  //   console.log("emp: ", this.employees)
-  //   let sortedEmployees;
 
-    sortHandler = item => {
-      let { employees, alphaOrder } = this.state;
-      let sortedEmployees;
-      if (item === 'first') {
-        if (alphaOrder === true) {
-          sortedEmployees = employees.sort((a, b) => {
-            if (a.name.first < b.name.first) {
-              return -1;
-            }
-            if (a.name.first > b.name.first) {
-              return 1;
-            }
-            return 0;
-          });
-        } else {
-          sortedEmployees = employees.sort((a, b) => {
-            if (a.name.first > b.name.first) {
-              return -1;
-            }
-            if (a.name.first < b.name.first) {
-              return 1;
-            }
-            return 0;
-          });
-        }
-      } else if (item === 'last') {
-        if (alphaOrder === true) {
-          sortedEmployees = employees.sort((a, b) => {
-            if (a.name.last < b.name.last) {
-              return -1;
-            }
-            if (a.name.last > b.name.last) {
-              return 1;
-            }
-            return 0;
-          });
-        } else {
-          sortedEmployees = employees.sort((a, b) => {
-            if (a.name.last > b.name.last) {
-              return -1;
-            }
-            if (a.name.last < b.name.last) {
-              return 1;
-            }
-            return 0;
-          });
-        }
+  sortHandler = item => {
+    let { employees, alphaOrder } = this.state;
+    let sortedEmployees;
+    if (item === 'first') {
+      if (alphaOrder === true) {
+        sortedEmployees = employees.sort((a, b) => {
+          if (a.name.first < b.name.first) {
+            return -1;
+          }
+          if (a.name.first > b.name.first) {
+            return 1;
+          }
+          return 0;
+        });
+      } else {
+        sortedEmployees = employees.sort((a, b) => {
+          if (a.name.first > b.name.first) {
+            return -1;
+          }
+          if (a.name.first < b.name.first) {
+            return 1;
+          }
+          return 0;
+        });
       }
-      console.log(this.state);
-      this.setState({
-        employees: sortedEmployees,
-        alphaOrder: !this.alphaOrder,
-      });
-      console.log('sortedEmp: ', sortedEmployees);
-    };
-  // };
+    } else if (item === 'last') {
+      if (alphaOrder === true) {
+        sortedEmployees = employees.sort((a, b) => {
+          if (a.name.last < b.name.last) {
+            return -1;
+          }
+          if (a.name.last > b.name.last) {
+            return 1;
+          }
+          return 0;
+        });
+      } else {
+        sortedEmployees = employees.sort((a, b) => {
+          if (a.name.last > b.name.last) {
+            return -1;
+          }
+          if (a.name.last < b.name.last) {
+            return 1;
+          }
+          return 0;
+        });
+      }
+    }
+    console.log(this.state);
+    this.setState({
+      employees: sortedEmployees,
+      alphaOrder: !this.alphaOrder,
+    });
+    console.log('sortedEmp: ', sortedEmployees);
+  };
+
 
 
 
 
 
   render() {
-    console.log(this.state.empolyees)
+    console.log(this.state.employees)
     return (
       <div className="container">
         <Header />
